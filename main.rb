@@ -1,18 +1,46 @@
-# File: main.rb
 require './TexteSuisse.rb'
 
+# After your existing setup code:
 filepath = 'data.csv'
-csv_loader = TextSuisse::DataLoader.new
-toponym_list = csv_loader.load_toponyms(filepath)
+loader = TextSuisse::DataLoader.new
+toponyms = loader.load_toponyms(filepath)
 
 tokenizer = TextSuisse::Tokenizer.new
-tokenized_toponyms, characters, c2i, i2c = tokenizer.tokenize(toponym_list)
+tokenized, chars, c2i, i2c = tokenizer.tokenize(toponyms)
 
+# 1. Create counting-based model
 bigram_generator = TextSuisse::BigramGenerator.new
-bigram = bigram_generator.generate(tokenized_toponyms, c2i)
+counting_probs = bigram_generator.generate(tokenized, c2i)
 
+# 2. Create trained model
+dataset_creator = TextSuisse::BigramDatasetCreator.new
+dataset = dataset_creator.create_dataset(tokenized, c2i)
+split_data = dataset_creator.split_dataset(dataset)
 
-generator = TextSuisse::TextGenerator.new(bigram, c2i, i2c)
+model = TextSuisse::BigramModel.new(chars.size)
+model.train(split_data[:train])
 
-puts "Generated toponyms:"
-5.times { puts generator.generate_word }
+# 3. Compare them
+comparator = TextSuisse::BigramComparator.new(
+  tokenizer,
+  counting_probs,
+  model,
+  c2i,
+  i2c
+)
+
+# Compare probability distributions for a specific character
+puts "Probability distribution comparison:"
+puts comparator.compare_probability_distributions('a')
+
+# Compare generated samples
+puts "\nGeneration comparison:"
+comparison = comparator.compare_generated_samples(5)
+puts "Counting-based samples: #{comparison[:counting]}"
+puts "Trained-model samples: #{comparison[:trained]}"
+
+# Evaluate on test data
+puts "\nTest performance:"
+perf = comparator.evaluate_models(split_data[:val])
+puts "Counting model loss: #{perf[:counting_loss]}"
+puts "Trained model loss: #{perf[:trained_loss]}"
