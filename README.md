@@ -8,7 +8,7 @@ DataGenLab is an experimental Ruby framework for comparing different approaches 
     "Fare", "Maharepa", "Rikitea", "Nouvelle Calédonie", "Le Mont-Dore", "La Foa", "Païta", "Boulari", "Port-Laguerre", "Pays de la Loire", "Département de Maine-et-Loire", "Département de la Vendée", "Département de la Sarthe", "Département de la Mayenne", "Département de la Loire-Atlantique"
 ]
 ```
-### Sample Generations from Both Models
+### Sample Generated From Models
 **Explicit Bigram:**
 ```ruby
 [
