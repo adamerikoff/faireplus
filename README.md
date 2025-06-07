@@ -2,9 +2,11 @@
 
 faireplus is an experiment designed for **comparing various approaches to sequence generation**. While it initially focuses on French toponyms (place names), its architecture is built to be easily **extensible to other domains and languages**.
 
-Below are examples of sequences generated using different configurations and models within this experiment.
-
 ---
+
+## Generated Sequences Examples
+
+Below are examples of sequences generated using different configurations and models within this experiment.
 
 ### Baseline Generated Sequences (Simple Bigram Probabilities)
 
@@ -22,7 +24,7 @@ gr-mazparçausenese
 
 ### Sequences from Trained Model (Single Layer)
 
-These sequences were generated after training a model with Bigram dataset.
+These sequences were generated after training a single-layer model with a Bigram dataset.
 
 ```
 cuiles-vis-les-dècouresux
@@ -79,3 +81,10 @@ luy-de-bois-sur-sai
 saint-martement
 saint-martement des-
 ```
+
+---
+
+## References
+
+* **Andrej Karpathy's "makemore" series**: This experiment is inspired by and draws concepts from Andrej Karpathy's educational series on building character-level language models.
+    * [https://karpathy.ai/](https://karpathy.ai/)
