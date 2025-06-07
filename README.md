@@ -1,26 +1,83 @@
-# faireplus: Comparative Sequence Generation Framework
+# faireplus: Comparative Sequence Generation Experiment
 
-DataGenLab is an experimental Ruby framework for comparing different approaches to sequence generation, initially focused on French toponyms but designed to be extensible to other domains.
+faireplus is an experiment designed for **comparing various approaches to sequence generation**. While it initially focuses on French toponyms (place names), its architecture is built to be easily **extensible to other domains and languages**.
 
-## Sample Input Data
-```ruby
-[
-    "Fare", "Maharepa", "Rikitea", "Nouvelle Calédonie", "Le Mont-Dore", "La Foa", "Païta", "Boulari", "Port-Laguerre", "Pays de la Loire", "Département de Maine-et-Loire", "Département de la Vendée", "Département de la Sarthe", "Département de la Mayenne", "Département de la Loire-Atlantique"
-]
+---
+
+## Generated Sequences Examples
+
+Below are examples of sequences generated using different configurations and models within this experiment.
+
+### Baseline Generated Sequences (Simple Bigram Probabilities)
+
+These sequences were generated using an initial or default configuration, specifically by **calculating simple bigram probabilities manually**.
+
 ```
-### Sample Generated From Models
-**Explicit Bigram:**
-```ruby
-[
-    "ca", "alenson", "saucars", "jelèngalç'antt laull", "ort s"
-]
-```
-
-**Trained Bigram:**
-```ruby
-[
-    "dertinenson-aybou", "risucalau-aigasesagn", "vaintillog", "s", "licailint ve-mômbrer"
-]
+hievioièran
+sa ffoceure-baulle-as
+s
+drecotesonogarse-rn
+gr-mazparçausenese
 ```
 
+---
 
+### Sequences from Trained Model (Single Layer)
+
+These sequences were generated after training a model with Bigram dataset.
+
+```
+cuiles-vis-les-dècouresux
+mas-les-lalalalay-cay-la-pales-diles-letacoufay
+res-bouzis-les-les-les-les-bouyrces-vilates-fcc
+bomala-laméppl-lala bsun
+balap-les-magnes-les-lay
+```
+
+---
+
+### Sequences from Trained Model: Single Embedding Layer, Random Init, Tanh Activation
+
+This section showcases sequences generated from a model trained with specific architectural choices: a single embedding layer, random initialization, and a Tanh activation function.
+
+```
+peyrel
+montours
+champagnère
+bas
+maint-tcolins-la-primiranche-bylanquie-lès-tourneille
+yvelles
+esle
+chal
+med
+sallan-de-les
+rauent du voie
+touly
+houties
+lynésères
+mazet
+juen-verneuf
+vergent de la boupe
+saine-sainvilla
+ignac-et-la-villong-sur-sèvres
+veur
+```
+
+---
+
+### Sequences from Trained Model: 5 Layers, Batch Normalization, ReLU, Kaiming Init
+
+Here are sequences generated from a more complex model configuration, featuring 5 layers, batch normalization, ReLU activation, and Kaiming initialization.
+
+```
+départeme
+bagne
+saint-sur-mer
+peyrat-sur-mer
+saines
+la champas-de-mar
+saint-martement de
+luy-de-bois-sur-sai
+saint-martement
+saint-martement des-
+```
