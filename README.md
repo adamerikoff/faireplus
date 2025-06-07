@@ -2,11 +2,9 @@
 
 faireplus is an experiment designed for **comparing various approaches to sequence generation**. While it initially focuses on French toponyms (place names), its architecture is built to be easily **extensible to other domains and languages**.
 
----
-
-## Generated Sequences Examples
-
 Below are examples of sequences generated using different configurations and models within this experiment.
+
+---
 
 ### Baseline Generated Sequences (Simple Bigram Probabilities)
 
